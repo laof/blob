@@ -1,0 +1,26 @@
+[
+  {
+    "id": "home",
+    "name": "Manulife login",
+    "title": "manulife login",
+    "page": "https://www.baidu.com",
+    "javascript": "https://laof.github.io/fjob/js/hi.js",
+    "parameter": ["username", "password"]
+  },
+  {
+    "id": "runoob_testing",
+    "name": "Runoob testing",
+    "title": "roob fk",
+    "page": "https://www.runoob.com",
+    "javascript": "https://laof.github.io/fjob/js/flutter.js",
+    "parameter": []
+  },
+  {
+    "id": "qqdownload",
+    "name": "QQ 下载",
+    "title": "QQ home",
+    "page": "https://www.qq.com/",
+    "javascript": "https://laof.github.io/fjob/js/http.js",
+    "parameter": []
+  }
+]
