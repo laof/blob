@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/laof/fjob/issues"
   },
-  "homepage": "https://github.com/laof/fjob#readme"
+  "homepage": "https://github.com/laof/fjob#readme",
+  "publishConfig": {
+    "@laof:fjob": "https://npm.pkg.github.com"
+  }
 }
