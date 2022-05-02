@@ -1,0 +1,23 @@
+name: Blob storage CI
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-go@v2
+        with:
+          go-version: 1.18
+    - run: go version
+    - run: go run main.go
+
+    - uses: JamesIves/github-pages-deploy-action@v4.3.3
+      with:
+        token: ${{ secrets.CDFILES }}
+        folder: blob-storage
+        repository-name: laof/laof.github.io
+        target-folder: blob-storage
+        branch: main
+        commit-message: updated blob-storage conf info by github action
