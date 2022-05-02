@@ -81,5 +81,4 @@ func size(bytes int64) string {
 	}
 
 	return fmt.Sprintf("%.2f%v", num, unit)
-
 }
