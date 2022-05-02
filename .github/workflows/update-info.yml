@@ -31,4 +31,4 @@ jobs:
           folder: data
           clean: false
           force: false
-          commit-message: update info.json by action
+          commit-message: update blob.json by action
