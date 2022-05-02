@@ -8,9 +8,10 @@
         return
       }
       document.querySelector('#time').innerHTML = 'last update time ' + res.time
-      const list = files('https://laof.github.io/blob/files', res.files)
+      const list = files('', res.files)
+      const domain = "https://laof.github.io/blob/files"
       const html = list.map((obj) => {
-        return `<li><a href="${obj.link}" target="_blank">${obj.link} ${obj.size}</a></li>`
+        return `<li><a href="${domain}${obj.link}" target="_blank">${obj.link} ${obj.size}</a></li>`
       })
 
       document.querySelector('#files').innerHTML = html.join('')
