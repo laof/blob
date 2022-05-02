@@ -1,101 +1,32 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>blob</title>
-    <style>
-      ul,
-      li {
-        padding: 0;
-        margin: 0;
-        list-style: none;
+<p id="time"></p>
+<ul id="files"></ul>
+<script>
+  fetch('blob.json')
+    .then((res) => res.json())
+    .then((res) => {
+      if (!res) {
+        return
       }
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-          Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-          "Segoe UI Symbol";
-        font-size: 16px;
-        line-height: 1.5;
-        word-wrap: break-word;
-      }
-      .container {
-        max-width: 1012px;
-        margin-right: auto;
-        margin-left: auto;
-      }
-      .container h1 {
-        font-weight: 600;
-        padding-bottom: 0.3em;
-        font-size: 2em;
-        border-bottom: 1px solid #eaecef;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-      }
+      document.querySelector('#time').innerHTML = 'last update time ' + res.time
+      const list = files('https://laof.github.io/blob/files', res.files)
+      const html = list.map((obj) => {
+        return `<li><a href="${obj.link}" target="_blank">${obj.link} ${obj.size}</a></li>`
+      })
 
-      #time {
-        font-size: 12px;
-        font-weight: 400;
-        color: black;
-      }
+      document.querySelector('#files').innerHTML = html.join('')
+    })
 
-      a {
-        color: black;
-        text-decoration: none;
+  function files(path, data = [], arr = []) {
+    for (let index = 0; index < data.length; index++) {
+      const obj = data[index]
+      const oc = obj.children
+      if (!Array.isArray(oc)) {
+        obj.link = `${path}/${obj.name}`
+        arr.push(obj)
+      } else if (oc.length) {
+        files(`${path}/${obj.name}`, oc, arr)
       }
-      h1 a {
-        color: #0366d6;
-      }
-
-      a:hover {
-        color: rgb(25, 195, 243);
-      }
-
-      li {
-        padding: 6px 0;
-        font-size: 18px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>
-        <a href="https://github.com/laof/blob">blob</a><span id="time"></span>
-      </h1>
-      <ul id="files"></ul>
-    </div>
-    <script>
-      fetch("blob.json")
-        .then((res) => res.json())
-        .then((res) => {
-          if (!res) {
-            return;
-          }
-          document.querySelector("#time").innerHTML =
-            "last update time " + res.time;
-          const list = files("https://laof.github.io/blob/files", res.files);
-          const html = list.map((obj) => {
-            return `<li><a href="${obj.link}" target="_blank">${obj.link} ${obj.size}</a></li>`;
-          });
-
-          document.querySelector("#files").innerHTML = html.join("");
-        });
-
-      function files(path, data = [], arr = []) {
-        for (let index = 0; index < data.length; index++) {
-          const obj = data[index];
-          const oc = obj.children;
-          if (!Array.isArray(oc)) {
-            obj.link = `${path}/${obj.name}`;
-            arr.push(obj);
-          } else if (oc.length) {
-            files(`${path}/${obj.name}`, oc, arr);
-          }
-        }
-        return arr;
-      }
-    </script>
-  </body>
-</html>
+    }
+    return arr
+  }
+</script>
