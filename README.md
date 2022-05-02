@@ -1,3 +1,1 @@
-#### blob storage
-
-#### https://laof.github.io
+#### [blob storage](https://laof.github.io)
