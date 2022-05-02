@@ -20,7 +20,7 @@ type ResData struct {
 	Time  string     `json:"time"`
 }
 
-const infofile = "data/info.json"
+const infofile = "data/data.json"
 
 func main() {
 
