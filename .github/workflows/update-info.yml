@@ -20,13 +20,15 @@ jobs:
           token: ${{ secrets.CDFILES }}
           folder: data
           repository-name: laof/laof.github.io
-          target-folder: files
           branch: main
+          clean: false
+          force: false
           commit-message: cicd:update files info by blob
 
       - uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: main
           folder: data
-          target-folder: data
+          clean: false
+          force: false
           commit-message: update info.json by action
