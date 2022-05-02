@@ -15,7 +15,7 @@ jobs:
 
     - uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
-        token: ${{ secrets.CDFILES }}
+        token: ${{ secrets.CDAPK }}
         folder: blob_storage
         repository-name: laof/laof.github.io
         target-folder: blob_storage
