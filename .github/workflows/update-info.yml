@@ -6,7 +6,7 @@ jobs:
   build:
     name: deploy files info
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, 'cicd:')"
+    # if: "contains(github.event.head_commit.message, 'cicd:')"
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
@@ -14,16 +14,6 @@ jobs:
           go-version: ">=1.18.0"
       - run: go version
       - run: go run main.go
-
-      - uses: JamesIves/github-pages-deploy-action@v4.3.3
-        with:
-          token: ${{ secrets.CDFILES }}
-          folder: data
-          repository-name: laof/laof.github.io
-          branch: main
-          clean: false
-          force: false
-          commit-message: cicd:update blob.json from blob
 
       - uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
