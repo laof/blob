@@ -29,8 +29,10 @@ func main() {
 	var list []FileInfo
 	file("files", &list)
 
-	nowtime := time.Now().Format("2006-01-02 15:04:05")
-	var rdata = ResData{Time: nowtime, Files: list}
+	var cstZone = time.FixedZone("CST", 8*3600)
+	newtime := time.Now().In(cstZone).Format("2006-01-02 15:04:05")
+
+	var rdata = ResData{Time: newtime, Files: list}
 
 	data, _ := json.Marshal(rdata)
 	ioutil.WriteFile(infofile, data, 0644)
