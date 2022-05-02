@@ -20,7 +20,7 @@ type ResData struct {
 	Time  string     `json:"time"`
 }
 
-const infofile = "data/data.json"
+const infofile = "data/blob.json"
 
 func main() {
 
@@ -36,7 +36,7 @@ func main() {
 
 	data, _ := json.Marshal(rdata)
 	ioutil.WriteFile(infofile, data, 0644)
-	fmt.Print("golang: update info.json successfully")
+	fmt.Print("golang: update blob.json successfully")
 }
 
 func file(dir string, list *[]FileInfo) {
