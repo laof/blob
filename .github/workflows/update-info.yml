@@ -16,8 +16,8 @@ jobs:
     - uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
         token: ${{ secrets.CDFILES }}
-        folder: blob-storage
+        folder: blob_storage
         repository-name: laof/laof.github.io
-        target-folder: blob-storage
+        target-folder: blob_storage
         branch: main
         commit-message: updated blob-storage conf info by github action

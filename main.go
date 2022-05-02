@@ -14,11 +14,11 @@ type FileInfo struct {
 	Children []FileInfo `json:"children"`
 }
 
-const infofile = "blob-storage/info.json"
+const infofile = "blob_storage/info.json"
 
 func main() {
 
-	if os.Mkdir("blob-storage", 0666) != nil {
+	if os.Mkdir("blob_storage", 0666) != nil {
 		fmt.Print("folder already exists")
 		return
 	}
@@ -28,6 +28,7 @@ func main() {
 	data, _ := json.Marshal(list)
 	ioutil.WriteFile(infofile, data, 0666)
 	fmt.Print("created info file")
+	fmt.Print(string(data))
 }
 
 func file(dir string, list *[]FileInfo) {
