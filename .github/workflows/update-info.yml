@@ -23,7 +23,7 @@ jobs:
           branch: main
           clean: false
           force: false
-          commit-message: cicd:update files info by blob
+          commit-message: cicd:update blob.json from blob
 
       - uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
