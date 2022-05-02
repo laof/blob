@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"time"
 )
 
 type FileInfo struct {
@@ -14,6 +15,11 @@ type FileInfo struct {
 	Children []FileInfo `json:"children"`
 }
 
+type ResData struct {
+	Files []FileInfo `json:"files"`
+	Time  string     `json:"time"`
+}
+
 const infofile = "data/info.json"
 
 func main() {
@@ -21,11 +27,14 @@ func main() {
 	os.Mkdir("data", 0755)
 
 	var list []FileInfo
-
 	file("files", &list)
-	data, _ := json.Marshal(list)
+
+	nowtime := time.Now().Format("2006-01-02 15:04:05")
+	var rdata = ResData{Time: nowtime, Files: list}
+
+	data, _ := json.Marshal(rdata)
 	ioutil.WriteFile(infofile, data, 0644)
-	fmt.Print("created info file")
+	fmt.Print("golang: update info.json successfully")
 }
 
 func file(dir string, list *[]FileInfo) {

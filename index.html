@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <base href="/blob/" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,6 +30,15 @@
         padding-bottom: 0.3em;
         font-size: 2em;
         border-bottom: 1px solid #eaecef;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      #time {
+        font-size: 12px;
+        font-weight: 400;
+        color: black;
       }
 
       a {
@@ -53,14 +61,21 @@
   </head>
   <body>
     <div class="container">
-      <h1><a href="https://laof.github.io/blob">blob</a></h1>
+      <h1>
+        <a href="https://github.com/laof/blob">blob</a
+        ><span id="time"></span>
+      </h1>
       <ul id="files"></ul>
     </div>
     <script>
       fetch("data/info.json")
         .then((res) => res.json())
         .then((res) => {
-          const list = files("https://laof.github.io/blob", res);
+          if (!res) {
+            return;
+          }
+          document.querySelector('#time').innerHTML = res.time;
+          const list = files("https://laof.github.io/blob/files", res.files);
           const html = list.map((obj) => {
             return `<li><a href="${obj.link}" target="_blank">${obj.link} ${obj.size}</a></li>`;
           });
