@@ -1,4 +1,4 @@
-name: Blob storage CI
+name: Blob storage CICD
 
 on: push
 
