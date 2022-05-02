@@ -26,8 +26,8 @@ func main() {
 	var list []FileInfo
 	file("files", &list)
 	data, _ := json.Marshal(list)
-
 	ioutil.WriteFile(infofile, data, 0666)
+	fmt.Print("created info file")
 }
 
 func file(dir string, list *[]FileInfo) {
