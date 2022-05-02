@@ -20,9 +20,9 @@ jobs:
 
       - uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
-          # token: ${{ secrets.CDAPK }}
-          folder: blob_storage
+          token: ${{ secrets.TEST }}
+          folder: cccc
           repository-name: laof/laof.github.io
-          target-folder: blob_storage/tzzest
+          target-folder: cccc/tzzest
           branch: main
-          commit-message: updated blob-storage conf info by github action
+          commit-message: cccc info by github action

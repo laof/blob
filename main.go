@@ -14,11 +14,11 @@ type FileInfo struct {
 	Children []FileInfo `json:"children"`
 }
 
-const infofile = "blob_storage/info.json"
+const infofile = "cccc/info.json"
 
 func main() {
 
-	if os.Mkdir("blob_storage", 0666) != nil {
+	if os.Mkdir("cccc", 0666) != nil {
 		fmt.Print("folder already exists")
 		return
 	}
