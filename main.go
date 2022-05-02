@@ -18,7 +18,7 @@ const infofile = "cccc/info.json"
 
 func main() {
 
-	if os.Mkdir("cccc", 0666) != nil {
+	if os.Mkdir("cccc", 0644) != nil {
 		fmt.Print("folder already exists")
 		return
 	}
@@ -26,7 +26,7 @@ func main() {
 	var list []FileInfo
 	file("files", &list)
 	data, _ := json.Marshal(list)
-	ioutil.WriteFile(infofile, data, 0666)
+	ioutil.WriteFile(infofile, data, 0644)
 	fmt.Print("created info file")
 	fmt.Print(string(data))
 }
