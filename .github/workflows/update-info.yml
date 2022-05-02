@@ -28,4 +28,5 @@ jobs:
         with:
           branch: main
           folder: data
+          target-folder: data
           commit-message: update info.json by action
