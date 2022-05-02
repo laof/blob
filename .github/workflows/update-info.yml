@@ -18,6 +18,6 @@ jobs:
         token: ${{ secrets.CDAPK }}
         folder: blob_storage
         repository-name: laof/laof.github.io
-        target-folder: blob_storage
+        target-folder: blob_storage/test
         branch: main
         commit-message: updated blob-storage conf info by github action
