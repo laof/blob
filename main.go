@@ -24,6 +24,7 @@ func main() {
 	}
 
 	var list []FileInfo
+
 	file("files", &list)
 	data, _ := json.Marshal(list)
 	ioutil.WriteFile(infofile, data, 0644)
